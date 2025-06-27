@@ -58,11 +58,6 @@ section:first-child {
   width: 79%;
 }
 
-section:first-child p {
-  padding: 18px;
-  font-size: 14px;
-}
-
 section:first-child div {
   position: relative;
   top: 48px;
