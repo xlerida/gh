@@ -1,0 +1,25 @@
+@import './fonts.css';
+@import './variables.css';
+@import './reset.css';
+
+body {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: var(--font-primary);
+  color: var(--color-text-primary);
+  background-image: url('assets/images/background.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
