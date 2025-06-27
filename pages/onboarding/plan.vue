@@ -32,7 +32,7 @@ function togglePlan(billed) {
        |
       <a href="https://www.gamehouse.com/terms-of-service" target="_blank">Terms of Service</a>
       |
-      <a href="https://www.gamehouse.com/terms-of-service" target="_blank">Restore Purchase</a>
+      <a href="https://support.gamehouse.com/hc/en-us/articles/215256318-How-can-I-redownload-my-purchased-games" target="_blank">Restore Purchase</a>
     </p>
   </main>
 </template>
