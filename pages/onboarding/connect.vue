@@ -28,7 +28,7 @@
               <span class="custom-checkbox__checkmark"></span>
               <span class="custom-checkbox__label">Send Me Offers, News and Fun Stuff!</span>
             </label>
-            <OnboardingCtaButton text="Connect" />
+            <OnboardingPrimaryButton text="Connect" />
           </div>
         </form>
         

@@ -16,7 +16,6 @@ button {
   font-size: 24px;
   font-weight: 600;
   border-radius: 4px;
-  border: 0;
   background: var(--background-button-primary);
   color: var(--color-text-tertiary);
   cursor: pointer;
