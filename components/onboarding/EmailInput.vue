@@ -28,7 +28,6 @@ input {
   padding: 18px;
   font-size: 18px;
   border-radius: 4px;
-  border: 0;
   width: 100%;
 }
 
