@@ -40,7 +40,6 @@ defineProps({
 
 .button-outlined svg path {
   fill: var(--background-button-primary);
-
 }
 
 .button-icon {

@@ -18,8 +18,14 @@ body {
 a {
   color: var(--color-link);
   text-decoration: none;
+  padding: var(--size-1);
 
   &:hover {
     text-decoration: underline;
   }
+}
+
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
