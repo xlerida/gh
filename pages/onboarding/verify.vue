@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 import { useOnboardingStore } from '~/stores/onboarding';
+import { computed, ref, onUnmounted } from 'vue';
 
 const router = useRouter();
 const onboardingStore = useOnboardingStore();
@@ -12,8 +13,13 @@ const isLoading = ref(false);
 const isPrimaryButtonDisabled = ref(false);
 const code = ref('');
 const errorMessage = ref('');
+const canResend = ref(true);
+const countdown = ref(0);
+let countdownInterval = null;
 
 async function handleFormSubmit() {
+  isLoading.value = true;
+  isPrimaryButtonDisabled.value = true;
   try {
     const response = await axios.post('http://localhost:8080/api/validate-email', {
       email: email.value,
@@ -26,7 +32,10 @@ async function handleFormSubmit() {
     }
   } catch (error) {
     errorMessage.value =
-      error.response?.data?.error || 'Invalid code. Please try again.';
+      error.response?.data?.error || 'Invalid email or code.';
+  } finally {
+    isLoading.value = false;
+    isPrimaryButtonDisabled.value = false;
   }
 }
 
@@ -37,7 +46,52 @@ function handlePreviousStep() {
 
 function handleCode(value) {
   code.value = value;
+  errorMessage.value = '';
 }
+
+async function handleResendCode() {
+  if (!canResend.value) return;
+  
+  try {
+    await axios.post('http://localhost:8080/api/send-email', {
+      email: email.value,
+      code: code.value,
+    });
+
+    canResend.value = false;
+    countdown.value = 30;
+
+    countdownInterval = setInterval(() => {
+      countdown.value--;
+      if (countdown.value <= 0) {
+        clearInterval(countdownInterval);
+        canResend.value = true;
+      }
+    }, 1000);
+
+    errorMessage.value = '';
+  } catch (error) {
+    if (error.response?.status === 429) {
+      canResend.value = false;
+      countdown.value = Math.ceil(error.response.data.retryAfter || 30);
+      countdownInterval = setInterval(() => {
+        countdown.value--;
+        if (countdown.value <= 0) {
+          clearInterval(countdownInterval);
+          canResend.value = true;
+        }
+      }, 1000);
+    }
+    errorMessage.value =
+      error.response?.data?.error || 'Failed to resend code. Please try again.';
+  }
+}
+
+onUnmounted(() => {
+  if (countdownInterval) {
+    clearInterval(countdownInterval);
+  }
+});
 </script>
 
 <template>
@@ -55,8 +109,15 @@ function handleCode(value) {
       <form @submit.prevent="handleFormSubmit">
         <OnboardingCodeInput :errorMessage="errorMessage" @update:modelValue="handleCode" />
         <div>
-          <p>Didn't get an email? <span>Resend Code</span></p>
-          <OnboardingPrimaryButton text="Verify" :isLoading="isLoading" :isDisabled="isPrimaryButtonDisabled"  />
+          <p>Didn't get an email? 
+            <span v-if="canResend" @click="handleResendCode">Resend Code</span>
+            <span v-else class="resend-disabled">Resend again in {{ countdown }}s</span>
+          </p>
+          <OnboardingPrimaryButton 
+            text="Verify" 
+            :isLoading="isLoading" 
+            :isDisabled="isPrimaryButtonDisabled || !code" 
+          />
         </div>
       </form>
     </section>
@@ -140,6 +201,11 @@ form p {
 form p span {
   color: var(--color-link);
   cursor: pointer;
+}
+
+form p .resend-disabled {
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
 }
 
 button {
