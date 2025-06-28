@@ -76,7 +76,6 @@ async function handleFormSubmit() {
 
     if (response.status === 200) {
       isLoading.value = false;
-      console.log(response);
       onboardingStore.setEmail(email.value);
       onboardingStore.nextStep();
       router.push(`/onboarding/${onboardingStore.currentStep}`);

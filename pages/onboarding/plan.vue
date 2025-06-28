@@ -9,7 +9,6 @@ const onboardingStore = useOnboardingStore();
 const isAnnualSelected = ref(true);
 const isMonthlySelected = ref(false);
 const plans = ref({});
-const error = ref(null);
 
 function togglePlan(billed) {
   if (billed === 'annual') {
@@ -35,10 +34,8 @@ onMounted(async () => {
   try {
     const response = await axios.get('http://localhost:8080/api/products');
     plans.value = response.data;
-    console.log('Plans fetched:', plans.value);
-  } catch (err) {
-    error.value = 'Failed to load plans. Please try again.';
-    console.error(err);
+  } catch (error) {
+    console.log('Error:', error);
   }
 });
 </script>
