@@ -1,5 +1,10 @@
 <script setup>
 import axios from 'axios';
+import { useRouter } from 'vue-router';
+import { useOnboardingStore } from '~/stores/onboarding';
+
+const router = useRouter();
+const onboardingStore = useOnboardingStore();
 
 const RETRY_ERROR = 'Please wait 30 seconds before resending.';
 
@@ -71,10 +76,15 @@ async function handleFormSubmit() {
 
     if (response.status === 200) {
       isLoading.value = false;
-      console.log('Email sent successfully, please verify on next step');
+      console.log(response);
+      onboardingStore.setEmail(email.value);
+      onboardingStore.nextStep();
+      router.push(`/onboarding/${onboardingStore.currentStep}`);
     }
     
   } catch (error) {
+    console.log('Error:', error);
+
     isLoading.value = false;
 
     if (error.response?.data?.error === RETRY_ERROR) {
@@ -138,7 +148,8 @@ section:last-child {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  width: 79%;
+  width: 87%;
+  max-width: 480px;
 }
 
 section:last-child p {
@@ -168,6 +179,7 @@ section:first-child {
   flex-direction: column;
   width: 100%;
   height: 100%;
+  max-width: 720px;
 }
 
 form {
@@ -201,7 +213,7 @@ label {
 .custom-checkbox__checkmark {
   position: absolute;
   top: 0;
-  left: 80px;
+  left: 68px;
   height: 20px;
   width: 20px;
   background-color: transparent;

@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 
 export const useOnboardingStore = defineStore('onboarding', {
   state: () => ({
-    steps: ['connect', 'verify', 'plan', 'congrats'],
+    steps: ['connect', 'verify', 'plan', 'success'],
     currentStep: 'connect',
     email: '',
   }),

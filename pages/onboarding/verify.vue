@@ -1,15 +1,47 @@
 <script setup>
-defineProps({
-  email: {
-    type: String,
-    default: "johndoe@johndoe.com",
-    required: true,
-  },
-});
+import axios from 'axios';
+import { useRouter } from 'vue-router';
+import { useOnboardingStore } from '~/stores/onboarding';
+
+const router = useRouter();
+const onboardingStore = useOnboardingStore();
+
+const email = computed(() => onboardingStore.email);
+
+const isLoading = ref(false);
+const isPrimaryButtonDisabled = ref(false);
+const code = ref('');
+const errorMessage = ref('');
+
+async function handleFormSubmit() {
+  try {
+    const response = await axios.post('http://localhost:8080/api/validate-email', {
+      email: email.value,
+      code: code.value,
+    });
+
+    if (response.status === 200) {
+      onboardingStore.nextStep();
+      router.push(`/onboarding/${onboardingStore.currentStep}`);
+    }
+  } catch (error) {
+    errorMessage.value =
+      error.response?.data?.error || 'Invalid code. Please try again.';
+  }
+}
+
+function handlePreviousStep() {
+  onboardingStore.previousStep();
+  router.push(`/onboarding/${onboardingStore.currentStep}`);
+}
+
+function handleCode(value) {
+  code.value = value;
+}
 </script>
 
 <template>
-  <OnboardingSecondaryButton class="onboarding-secondary-button" text="Modify email" variant="outlined" />
+  <OnboardingSecondaryButton class="onboarding-secondary-button" text="Modify email" variant="outlined" @click="handlePreviousStep" />
   <main>
     <section>
       <div>
@@ -19,12 +51,12 @@ defineProps({
     <section>
       <h1>Get Verified!</h1>
       <h2>Enter the one-time code we sent to:</h2>
-      <h3>johndoe@gmail.com</h3>
-      <form>
-        <OnboardingCodeInput />
+      <h3>{{ email }}</h3>
+      <form @submit.prevent="handleFormSubmit">
+        <OnboardingCodeInput :errorMessage="errorMessage" @update:modelValue="handleCode" />
         <div>
           <p>Didn't get an email? <span>Resend Code</span></p>
-          <OnboardingPrimaryButton text="Verify" />
+          <OnboardingPrimaryButton text="Verify" :isLoading="isLoading" :isDisabled="isPrimaryButtonDisabled"  />
         </div>
       </form>
     </section>
@@ -45,8 +77,9 @@ main {
   align-items: flex-start;
   height: 50vh;
   text-align: center;
-  gap: 98px;
-  max-height: 500px;
+  gap: calc(var(--size-9) * 2);
+  max-height: 420px;
+  min-height: 420px;
   max-width: 1024px;
 }
 
@@ -55,12 +88,12 @@ section:first-child {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  width: 79%;
+  max-width: 415px;
 }
 
 section:first-child div {
   position: relative;
-  top: var(--size-9);
+  top: var(--size-8);
 }
 
 h1 {
@@ -70,7 +103,7 @@ h1 {
 }
 
 h2 {
-  font-size: var(--size-6);
+  font-size: var(--size-5);
   font-weight: var(--font-weight-regular);
 }
 
@@ -84,8 +117,8 @@ h3 {
 section:last-child {
   display: flex;
   flex-direction: column;
-  width: 100%;
   height: 100%;
+  max-width: 720px;
 }
 
 form {

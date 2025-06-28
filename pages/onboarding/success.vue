@@ -6,10 +6,10 @@
       <h1>Congrats! You're now a <span>subscriber</span>!</h1>
       <h2>Explore your membership now.</h2>
     </div>
-    <div class="congrats-circle">
+    <div class="success-circle">
       <img src="~/assets/images/stars.svg" />
     </div>
-    <img class="congrats-confetti" src="~/assets/images/confetti.svg" />
+    <img class="success-confetti" src="~/assets/images/confetti.svg" />
   </main>
 </template>
 
@@ -41,14 +41,14 @@ span {
   color: var(--background-button-secondary);
 }
 
-.congrats-circle {
+.success-circle {
   width: 300px;
   height: 300px;
   border-radius: 300px;
-  background-color: var(--background-congrats-circle);
+  background-color: var(--background-success-circle);
 }
 
-.congrats-confetti {
+.success-confetti {
   position: absolute;
   top: 0;
   z-index: -1;

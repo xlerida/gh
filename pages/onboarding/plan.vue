@@ -1,9 +1,18 @@
 <script setup>
+import axios from 'axios';
+import { useRouter } from 'vue-router';
+import { useOnboardingStore } from '~/stores/onboarding';
+
+const router = useRouter();
+const onboardingStore = useOnboardingStore();
+
 const isAnnualSelected = ref(true);
 const isMonthlySelected = ref(false);
+const plans = ref({});
+const error = ref(null);
 
 function togglePlan(billed) {
-  if (billed === "annual") {
+  if (billed === 'annual') {
     isAnnualSelected.value = true;
     isMonthlySelected.value = false;
   } else {
@@ -11,28 +20,81 @@ function togglePlan(billed) {
     isMonthlySelected.value = true;
   }
 }
+
+function handlePreviousStep() {
+  onboardingStore.previousStep();
+  router.push(`/onboarding/${onboardingStore.currentStep}`);
+}
+
+function handleStartTrial() {
+  onboardingStore.nextStep();
+  router.push(`/onboarding/${onboardingStore.currentStep}`);
+}
+
+onMounted(async () => {
+  try {
+    const response = await axios.get('http://localhost:8080/api/products');
+    plans.value = response.data;
+    console.log('Plans fetched:', plans.value);
+  } catch (err) {
+    error.value = 'Failed to load plans. Please try again.';
+    console.error(err);
+  }
+});
 </script>
 
 <template>
-  <OnboardingSecondaryButton class="onboarding-secondary-button" variant="icon" />
+  <OnboardingSecondaryButton
+    class="onboarding-secondary-button"
+    variant="icon"
+    @click="handlePreviousStep"
+  />
   <main>
     <h1>Choose your plan</h1>
     <div>
-      <section>
-        <OnboardingPlanCard title="Annual" price="$ 87.99 /year" billed="Billed annually" trial="7-day free trial" :isSelected="isAnnualSelected" :hasTooltip="true" tooltip="Save 20%" @click="togglePlan('annual')" /> 
-      </section>
-      <section>
-        <OnboardingPlanCard title="Monthly" price="$ 9.99 /month" billed="Billed monthly" trial="No free trial" :isSelected="isMonthlySelected" @click="togglePlan('monthly')" />
-      </section>
+      <OnboardingPlanCard
+        title="Annual"
+        :price="`${plans?.year?.price} /year`"
+        :billed="`Billed annually`"
+        :currency="plans?.year?.currency"
+        :trial="`${plans?.year?.trial_days}-day free trial`"
+        :isSelected="isAnnualSelected"
+        :hasTooltip="true"
+        tooltip="Save 20%"
+        @click="togglePlan('annual')"
+      />
+      <OnboardingPlanCard
+        title="Monthly"
+        :price="`${plans?.monthly?.price} /month`"
+        :billed="`Billed monthly`"
+        :currency="plans?.monthly?.currency"
+        :trial="`${plans?.monthly?.trial_days}-day free trial`"
+        :isSelected="isMonthlySelected"
+        @click="togglePlan('monthly')"
+      />
     </div>
     <p class="cancel">Cancel anytime.</p>
-    <OnboardingPrimaryButton class="onboarding-primary-button" text="Start my Free Trial!" />
+    <OnboardingPrimaryButton
+      class="onboarding-primary-button"
+      text="Start my Free Trial!"
+      @click="handleStartTrial"
+    />
     <p class="terms">
-      <a href="https://www.gamehouse.com/privacypolicy" target="_blank">Privacy Policy</a>
-       |
-      <a href="https://www.gamehouse.com/terms-of-service" target="_blank">Terms of Service</a>
+      <a
+        href="https://www.gamehouse.com/privacypolicy"
+        target="_blank"
+        >Privacy Policy</a
+      >
       |
-      <a href="https://support.gamehouse.com/hc/en-us/articles/215256318-How-can-I-redownload-my-purchased-games" target="_blank">Restore Purchase</a>
+      <a href="https://www.gamehouse.com/terms-of-service" target="_blank"
+        >Terms of Service</a
+      >
+      |
+      <a
+        href="https://support.gamehouse.com/hc/en-us/articles/215256318-How-can-I-redownload-my-purchased-games"
+        target="_blank"
+        >Restore Purchase</a
+      >
     </p>
   </main>
 </template>
@@ -62,14 +124,6 @@ main > div {
   flex-direction: row;
   gap: var(--size-6);
   width: 100%;
-}
-
-section:first-child {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-  width: 79%;
 }
 
 h1 {

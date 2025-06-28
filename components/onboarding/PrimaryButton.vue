@@ -34,7 +34,9 @@ button {
 }
 
 svg {
-  width: var(--size-8);
+  width: var(--size-6);
+  position: relative;
+  top: var(--size-1);
 }
 
 .rotate {
