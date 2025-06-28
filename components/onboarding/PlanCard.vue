@@ -1,5 +1,5 @@
 <script setup>
-defineProps({
+const props = defineProps({
   isSelected: {
     type: Boolean,
     default: false,
@@ -24,10 +24,18 @@ defineProps({
     type: String,
     default: "",
   },
+  currency: {
+    type: String,
+    default: "",
+  },
   trial: {
     type: String,
     default: "",
   },
+});
+
+const currencySymbol = computed(() => {
+  return props.currency === 'USD' ? '$' : '€';
 });
 </script>
 
@@ -40,7 +48,7 @@ defineProps({
     <div class="plan-card-inner">
       <h2>{{ title }}</h2>
       <div class="plan-card-price-billed">
-        <p>{{ price }}</p>
+        <p><span>{{ currencySymbol }}</span>{{ price }}</p>
         <p>{{ billed }}</p>
       </div>
       <p class="plan-card-trial">{{ trial }}</p>
