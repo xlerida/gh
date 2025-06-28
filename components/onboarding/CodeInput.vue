@@ -39,15 +39,15 @@ onMounted(() => {
 div {
   display: flex;
   justify-content: space-between;
-  gap: 8px;
+  gap: var(--size-3);
 }
 
 input {
   width: 80px;
   height: 70px;
   text-align: center;
-  font-size: 24px;
+  font-size: var(--size-6);
   color: var(--color-text-tertiary);
-  border-radius: 8px;
+  border-radius: var(--size-3);
 }
 </style>

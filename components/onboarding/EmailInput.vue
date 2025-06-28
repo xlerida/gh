@@ -20,19 +20,19 @@ const email = ref('');
 div {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--size-4);
   text-align: left;
 }
 
 input {
-  padding: 18px;
-  font-size: 18px;
-  border-radius: 4px;
+  padding: var(--size-5);
+  font-size: var(--size-5);
+  border-radius: var(--size-2);
   width: 100%;
 }
 
 p {
   color: var(--color-text-error);
-  font-size: 14px;
+  font-size: var(--size-5);
 }
 </style>

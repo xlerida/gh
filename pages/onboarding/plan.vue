@@ -42,7 +42,7 @@ function togglePlan(billed) {
   position: absolute;
   top: 20px;
   left: 20px;
-  padding: 24px;
+  padding: var(--size-6);
 }
 
 main {
@@ -60,7 +60,7 @@ main {
 main > div {
   display: flex;
   flex-direction: row;
-  gap: 24px;
+  gap: var(--size-6);
   width: 100%;
 }
 
@@ -73,20 +73,20 @@ section:first-child {
 }
 
 h1 {
-  font-size: 42px;
-  font-weight: 800;
-  margin-bottom: 8px;
+  font-size: var(--size-9);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--size-3);
 }
 
 h2 {
-  font-size: 24px;
-  font-weight: 400;
+  font-size: var(--size-6);
+  font-weight: var(--font-weight-regular);
 }
 
 h3 {
-  margin-top: 8px;
-  margin-bottom: 36px;
-  font-size: 24px;
+  margin-top: var(--size-3);
+  margin-bottom: var(--size-8);
+  font-size: var(--size-6);
   color: var(--color-text-secondary)
 }
 
@@ -105,12 +105,12 @@ form {
 }
 
 form p {
-  padding-left: 24px;
+  padding-left: var(--size-6);
   margin: 5px 0;
   user-select: none;
   position: relative;
   top: -24px;
-  font-size: 18px;
+  font-size: var(--size-5);
 }
 
 form p span {

@@ -51,8 +51,8 @@ defineProps({
 <style scoped>
 .plan-card {
   background: transparent;
-  border-radius: 16px;
-  padding: 4px;
+  border-radius: var(--size-4);
+  padding: var(--size-2);
   width: 420px;
   display: flex;
   align-items: center;
@@ -67,7 +67,7 @@ defineProps({
 
 .plan-card-inner {
   background: var(--background-plan-card-primary);
-  border-radius: 14px;
+  border-radius: var(--size-4);
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -80,47 +80,47 @@ defineProps({
 }
 
 h2 {
-  font-size: 36px;
-  font-weight: 800;
-  margin-bottom: 8px;
+  font-size: var(--size-8);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--size-3);
   background: var(--background-plan-card-secondary);
-  padding: 12px 0;
-  border-radius: 12px 12px 0 0;
+  padding: var(--size-4) 0;
+  border-radius: var(--size-4) var(--size-4) 0 0;
 }
 
 .plan-card-price-billed {
-  margin: 24px 0 32px;
+  margin: var(--size-6) 0 var(--size-7);
 }
 
 .plan-card-price-billed p:first-of-type {
-  font-size: 36px;
-  font-weight: 800;
+  font-size: var(--size-8);
+  font-weight: var(--font-weight-bold);
 }
 
 .plan-card-price-billed p:last-child {
   opacity: 0.8;
-  font-size: 18px;
-  font-weight: 400;
+  font-size: var(--size-5);
+  font-weight: var(--font-weight-regular);
 }
 
 .plan-card-trial {
   color: var(--color-text-quaternary);
   background: var(--color-text-tertiary);
-  padding: 12px 0;
-  border-radius: 0 0 12px 12px;
+  padding: var(--size-4) 0;
+  border-radius: 0 0 var(--size-4) var(--size-4);
   text-align: center;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 
 .plan-card-tooltip {
   position: absolute;
   top: -34px;
   right: 20px;
-  padding: 8px 12px;
+  padding: var(--size-3) var(--size-4);
   background: var(--background-plan-card-tertiary);
   color: var(--color-text-tertiary);
-  font-weight: 600;
-  border-radius: 12px 12px 0 0;
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--size-4) var(--size-4) 0 0;
 }
 
 .plan-card-checkmark {
@@ -128,10 +128,10 @@ h2 {
   z-index: 10;
   top: 20px;
   left: 20px;
-  width: 36px;
-  height: 36px;
+  width: var(--size-7);
+  height: var(--size-7);
   border-radius: 100px;
-  border: 2px solid white;
+  border: var(--size-1) solid white;
 }
 
 .plan-card-checkmark-selected {
@@ -140,12 +140,12 @@ h2 {
   justify-content: center;
   background: var(--color-text-secondary);
   border: 0;
-  width: 38px;
-  height: 38px;
+  width: var(--size-8);
+  height: var(--size-8);
 }
 
 .plan-card-checkmark-selected svg {
-  width: 24px;
+  width: var(--size-6);
 }
 
 .plan-card-checkmark-selected svg path {

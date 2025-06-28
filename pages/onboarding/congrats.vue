@@ -26,15 +26,15 @@ div {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: var(--size-4);
 }
 
 h1 {
-  font-size: 48px;
+  font-size: var(--size-9);
 }
 
 h2 {
-  font-weight: 400;
+  font-weight: var(--font-weight-regular);
 }
 
 span {

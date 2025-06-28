@@ -12,10 +12,10 @@ defineProps({
 
 <style scoped>
 button {
-  padding: 18px;
-  font-size: 24px;
-  font-weight: 600;
-  border-radius: 4px;
+  padding: var(--size-5);
+  font-size: var(--size-6);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--size-2);
   background: var(--background-button-primary);
   color: var(--color-text-tertiary);
   cursor: pointer;

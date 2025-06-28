@@ -24,18 +24,18 @@ defineProps({
 .button-outlined {
   display: flex;
   align-items: center;
-  gap: 12px;
-  height: 24px;
+  gap: var(--size-4);
+  height: var(--size-6);
   font-size: 16px;
-  border-radius: 4px;
-  border: 2px solid var(--background-button-primary);
+  border-radius: var(--size-2);
+  border: var(--size-1) solid var(--background-button-primary);
   background: transparent;
   color: var(--background-button-primary);
   cursor: pointer;
 }
 
 .button-outlined svg {
-  width: 18px;
+  width: 14px;
 }
 
 .button-outlined svg path {
@@ -55,7 +55,7 @@ defineProps({
 }
 
 .button-icon svg {
-  width: 18px;
+  width: var(--size-5);
   flex-shrink: 0;
   fill: var(--color-text-tertiary);
 }

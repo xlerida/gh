@@ -28,14 +28,14 @@ li {
   align-items: center;
   justify-content: flex-start;
   text-align: left;
-  gap: 12px;
-  margin: 8px 0;
-  padding: 12px 16px;
-  font-size: 18px;
-  border-radius: 2px;
+  gap: var(--size-4);
+  margin: var(--size-3) 0;
+  padding: var(--size-4) var(--size-5);
+  font-size: var(--size-5);
+  border-radius: var(--size-1);
 }
 img {
-  width: 24px;
-  height: 24px;
+  width: var(--size-6);
+  height: var(--size-6);
 }
 </style>

@@ -57,25 +57,25 @@ section:first-child {
 }
 
 section:first-child p {
-  padding: 18px;
+  padding: var(--size-5);
   font-size: 14px;
 }
 
 section:first-child div {
   position: relative;
-  top: 48px;
+  top: var(--size-9);
 }
 
 h1 {
-  font-size: 42px;
-  font-weight: 800;
-  margin-bottom: 8px;
+  font-size: var(--size-9);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--size-3);
 }
 
 h2 {
-  font-size: 24px;
-  font-weight: 400;
-  margin-bottom: 36px;
+  font-size: var(--size-6);
+  font-weight: var(--font-weight-regular);
+  margin-bottom: var(--size-8);
 }
 
 section:last-child {
@@ -98,7 +98,7 @@ label {
   justify-content: center;
   position: relative;
   cursor: pointer;
-  padding-left: 24px;
+  padding-left: var(--size-6);
   margin: 5px 0;
   user-select: none;
   position: relative;
@@ -120,7 +120,7 @@ label {
   height: 20px;
   width: 20px;
   background-color: transparent;
-  border: 2px solid #ccc;
+  border: var(--size-1) solid #ccc;
   border-radius: 4px;
   transition: all 0.3s;
 }
@@ -137,17 +137,17 @@ label {
 
 .custom-checkbox__checkmark:after {
   left: 6px;
-  top: 2px;
+  top: var(--size-1);
   width: 6px;
   height: 10px;
   border: solid white;
-  border-width: 0 2px 2px 0;
+  border-width: 0 var(--size-1) var(--size-1) 0;
   transform: rotate(45deg);
 }
 
 .custom-checkbox__label {
-  margin-left: 8px;
-  font-size: 18px;
+  margin-left: var(--size-3);
+  font-size: var(--size-5);
 }
 
 button {
