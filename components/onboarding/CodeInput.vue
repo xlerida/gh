@@ -85,4 +85,12 @@ p {
   color: var(--color-text-error);
   font-size: 16px;
 }
+
+@media (max-width: 1024px) {
+  input {
+    width: 100%;
+    height: 12vw;
+    border-radius: 0.5vw;
+  }
+}
 </style>

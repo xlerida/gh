@@ -15,6 +15,8 @@ const code = ref('');
 const errorMessage = ref('');
 const canResend = ref(true);
 const countdown = ref(0);
+const isPortrait = ref(false);
+
 let countdownInterval = null;
 
 async function handleFormSubmit() {
@@ -88,17 +90,27 @@ async function handleResendCode() {
   }
 }
 
+const updateIsPortrait = () => {
+  isPortrait.value = window.innerWidth <= 1024;
+};
+
+onMounted(() => {
+  updateIsPortrait();
+  window.addEventListener('resize', updateIsPortrait);
+});
+
 onUnmounted(() => {
   if (countdownInterval) {
     clearInterval(countdownInterval);
   }
+  window.removeEventListener('resize', updateIsPortrait);
 });
 </script>
 
 <template>
   <OnboardingSecondaryButton class="onboarding-secondary-button" text="Modify email" variant="outlined" @click="handlePreviousStep" />
   <main>
-    <section>
+    <section v-if="!isPortrait">
       <div>
         <OnboardingBenefitsList />
       </div>
@@ -107,6 +119,7 @@ onUnmounted(() => {
       <h1>Get Verified!</h1>
       <h2>Enter the one-time code we sent to:</h2>
       <h3>{{ email }}</h3>
+      <OnboardingBenefitsList v-if="isPortrait" />
       <form @submit.prevent="handleFormSubmit">
         <OnboardingCodeInput :errorMessage="errorMessage" @update:modelValue="handleCode" />
         <div>
@@ -211,5 +224,62 @@ form p .resend-disabled {
 
 button {
   margin-bottom: 10px;
+}
+
+@media (max-width: 1024px) {
+  main {
+    flex-direction: column;
+    width: 100vw;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-height: 100vh;
+    height: 100vh;
+  }
+
+  section {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: 100vh !important;
+  }
+
+  section:last-child {
+    height: auto;
+  }
+
+  h1 {
+    margin-top: 12vw;
+    font-size: 6.5vw;
+    white-space: nowrap;
+  }
+
+  h2 {
+    font-size: 4vw;
+  }
+
+  h3 {
+    font-size: 4vw;
+    margin-bottom: 4vw;
+  }
+
+  form {
+    padding: 4vw;
+    margin-bottom: 10vw;
+  }
+
+  form div:last-child {
+    margin-top: 8vw;
+  }
+}
+
+@media (max-width: 720px) {
+  h1 {
+    margin-top: 24vw;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    margin-top: 36vw;
+  }
 }
 </style>

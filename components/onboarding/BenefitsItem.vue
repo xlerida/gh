@@ -34,8 +34,24 @@ li {
   font-size: var(--size-5);
   border-radius: var(--size-1);
 }
+
 img {
   width: var(--size-6);
   height: var(--size-6);
+}
+
+li:nth-child(2) {
+  padding: var(--size-3) var(--size-5);
+}
+
+@media (max-width: 1024px) {
+  li {
+    font-size: 4vw;
+    gap: 2vw;
+  }
+  img {
+    width: 4.5vw;
+    height: 4.5vw;
+  }
 }
 </style>

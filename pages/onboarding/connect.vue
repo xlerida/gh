@@ -14,6 +14,7 @@ const errorCountdown = ref(0);
 const offers = ref(true);
 const isLoading = ref(false);
 const isPrimaryButtonDisabled = ref(false);
+const isPortrait = ref(false);
 
 const primaryButtonText = computed({
   get() {
@@ -94,6 +95,19 @@ async function handleFormSubmit() {
       error.response?.data?.error || 'Something went wrong. Please try again.';
   }
 };
+
+const updateIsPortrait = () => {
+  isPortrait.value = window.innerWidth <= 1024;
+};
+
+onMounted(() => {
+  updateIsPortrait();
+  window.addEventListener('resize', updateIsPortrait);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', updateIsPortrait);
+});
 </script>
 
 <template>
@@ -101,9 +115,9 @@ async function handleFormSubmit() {
       <section>
         <h1>Connect Your Account</h1>
         <h2>...and unlock your benefits!</h2>
-
+        <OnboardingBenefitsList v-if="isPortrait" />
         <form @submit.prevent="handleFormSubmit">
-          <OnboardingEmailInput v-model="email" :errorMessage="errorMessage" />
+          <OnboardingEmailInput class="onboarding-email-input" v-model="email" :errorMessage="errorMessage" />
           <div>
             <label>
               <input type="checkbox" v-model="offers" class="custom-checkbox__input">
@@ -116,9 +130,9 @@ async function handleFormSubmit() {
       </section>
       <section>
         <div>
-          <OnboardingBenefitsList />
+          <OnboardingBenefitsList class="onboarding-benefits-list" v-if="!isPortrait" />
         </div>
-        <p>
+        <p class="onboarding-terms">
           By continuing, you agree to our 
           <a href="https://www.gamehouse.com/terms-of-service" target="_blank">Terms of Service</a> 
           and 
@@ -218,7 +232,6 @@ label {
   background-color: transparent;
   border: var(--size-1) solid #ccc;
   border-radius: 4px;
-  transition: all 0.3s;
 }
 
 .custom-checkbox__checkmark:after {
@@ -248,5 +261,98 @@ label {
 
 button {
   margin-bottom: 10px;
+}
+
+@media (max-width: 1024px) {
+  main {
+    flex-direction: column;
+    width: 100vw;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-height: 100vh;
+    height: 100vh;
+  }
+
+  section {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    height: auto !important;
+  }
+
+  section:first-child {
+    margin-top: 18vw;
+  }
+
+  h1 {
+    font-size: 6.5vw;
+    white-space: nowrap;
+  }
+
+  h2 {
+    font-size: 4vw;
+    margin-bottom: 5vw;
+  }
+
+  form {
+    margin-top: 18vw;
+    padding: 0 8vw;
+  }
+
+  .onboarding-email-input {
+    margin-bottom: 18vw;
+  }
+
+  .custom-checkbox__label {
+    font-size: 4vw;
+  }
+  
+  .custom-checkbox__checkmark {
+    top: 1.5vw;
+    left: 5.8vw;
+  }
+}
+
+@media (max-width: 720px) {
+    .custom-checkbox__label {
+    font-size: 4vw;
+  }
+  
+  .custom-checkbox__checkmark {
+    top: 1.2vw;
+    left: 5vw;
+  }
+}
+
+@media (max-width: 600px) {
+    .custom-checkbox__label {
+    font-size: 4vw;
+  }
+  
+  .custom-checkbox__checkmark {
+    top: 0.5vw;
+    left: 5vw;
+  }
+}
+
+@media (max-width: 480px) {
+    .custom-checkbox__label {
+    font-size: 4vw;
+  }
+  
+  .custom-checkbox__checkmark {
+    top: 0.3vw;
+    left: 4vw;
+  }
+}
+
+@media (max-width: 400px) {
+    .custom-checkbox__label {
+    font-size: 4vw;
+  }
+  
+  .custom-checkbox__checkmark {
+    top: 0vw;
+    left: 4vw;
+  }
 }
 </style>
