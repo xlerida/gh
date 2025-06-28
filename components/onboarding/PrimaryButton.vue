@@ -81,13 +81,12 @@ button {
   position: relative;
   overflow: hidden;
   transition: background 0.3s;
-  /* Set a fixed height or min-height if needed */
   min-height: calc(var(--size-6) + 2 * var(--size-5));
 }
 
 .button-content {
-  position: relative; /* Ensure content stays above ripples */
-  z-index: 1; /* Content should be above the ripple */
+  position: relative;
+  z-index: 1;
 }
 
 button.disabled {

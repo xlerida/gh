@@ -47,12 +47,12 @@ onMounted(() => {
 <template>
   <div class="code-inputs-container">
     <div>
-      <input class="code-input" v-model="code01" maxlength="1" />
-      <input class="code-input" v-model="code02" maxlength="1" />
-      <input class="code-input" v-model="code03" maxlength="1" />
-      <input class="code-input" v-model="code04" maxlength="1" />
-      <input class="code-input" v-model="code05" maxlength="1" />
-      <input class="code-input" v-model="code06" maxlength="1" />
+      <input class="code-input" v-model="code01" maxlength="1" @keydown.enter.prevent />
+      <input class="code-input" v-model="code02" maxlength="1" @keydown.enter.prevent />
+      <input class="code-input" v-model="code03" maxlength="1" @keydown.enter.prevent />
+      <input class="code-input" v-model="code04" maxlength="1" @keydown.enter.prevent />
+      <input class="code-input" v-model="code05" maxlength="1" @keydown.enter.prevent />
+      <input class="code-input" v-model="code06" maxlength="1" @keydown.enter.prevent />
     </div>
     <p v-if="errorMessage">{{ errorMessage }}</p>
   </div>

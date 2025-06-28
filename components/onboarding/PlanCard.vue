@@ -70,7 +70,7 @@ const currencySymbol = computed(() => {
 }
 
 .plan-card-selected {
-  background: linear-gradient(to right, #ff7eb3, #8a4eff, #4fcdfc); /* Gradient border when selected */
+  background: linear-gradient(to right, #ff7eb3, #8a4eff, #4fcdfc);
 }
 
 .plan-card-inner {
@@ -84,7 +84,7 @@ const currencySymbol = computed(() => {
 }
 
 .plan-card-inner.selected {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Optional highlight effect */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 h2 {

@@ -22,5 +22,8 @@ export const useOnboardingStore = defineStore('onboarding', {
         this.currentStep = this.steps[currentIndex - 1];
       }
     },
+    resetSteps() {
+      this.currentStep = 'connect';
+    },
   },
 });

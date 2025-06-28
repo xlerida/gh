@@ -40,13 +40,14 @@ async function handleFormSubmit() {
 }
 
 function handlePreviousStep() {
-  onboardingStore.previousStep();
-  router.push(`/onboarding/${onboardingStore.currentStep}`);
+  onboardingStore.resetSteps();
+  router.push(`/onboarding/connect`);
 }
 
 function handleCode(value) {
   code.value = value;
   errorMessage.value = '';
+  handleFormSubmit();
 }
 
 async function handleResendCode() {
@@ -116,7 +117,7 @@ onUnmounted(() => {
           <OnboardingPrimaryButton 
             text="Verify" 
             :isLoading="isLoading" 
-            :isDisabled="isPrimaryButtonDisabled || !code" 
+            :isDisabled="isPrimaryButtonDisabled" 
           />
         </div>
       </form>
