@@ -1,4 +1,15 @@
 <script setup>
+import { gsap } from 'gsap';
+
+const pageContainer = ref(null);
+const route = useRoute();
+
+watch(() => route.path, () => {
+  gsap.set(pageContainer.value, { opacity: 0, onComplete: () => {
+    gsap.to(pageContainer.value, { opacity: 1, duration: 0.5, ease: 'power4.in' });
+  }});
+});
+
 useHead({
   style: [
     {
@@ -35,9 +46,11 @@ useHead({
       }`
     }
   ]
-})
+});
 </script>
 
 <template>
-  <slot />
+  <div ref="pageContainer">
+    <NuxtPage />
+  </div>
 </template>

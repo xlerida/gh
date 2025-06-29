@@ -1,5 +1,4 @@
 @import './fonts.css';
-@import './variables.css';
 @import './reset.css';
 
 html, body {
@@ -31,6 +30,10 @@ body::before {
 }
 
 @media (max-width: 1024px) {
+  body {
+    align-items: flex-start;
+  }
+
   body::before {
     background-image: url('assets/images/background-portrait.svg');
   }
@@ -60,10 +63,4 @@ a {
 .disabled {
   opacity: 0.5;
   pointer-events: none;
-}
-
-@media (max-width: 1024px) {
-  body {
-    align-items: flex-start;
-  }
 }
