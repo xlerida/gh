@@ -34,11 +34,10 @@ A Nuxt 3 implementation of a subscription onboarding flow with four interactive 
 - Animated  success page
 
 ## Technical Decisions
-
-- Figma for pixel-perfect designs
 - Vue 3 for reactive components
 - Pinia for centralized state management
-- Nuxt for server-side render and simplified file structure
+- Nuxt for server-side rendering and simplified file structure
+- Figma for assets design
 
 ## Setup and Running the Application
 
@@ -58,6 +57,8 @@ npm i
 ```
 
 ### Development
+http://localhost:3000/
+
 ```bash
 npm run dev
 ```
