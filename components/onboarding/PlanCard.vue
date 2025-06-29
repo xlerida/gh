@@ -179,7 +179,7 @@ h2 {
 
   .plan-card-inner > div {
     width: 100%;
-    max-width: 36vw;
+    max-width: 40vw;
     display: flex;
     flex-direction: column;
   }
@@ -193,13 +193,13 @@ h2 {
     align-items: center;
     font-size: 5vw;
     padding: 0 0 0 12vw;
-    width: 48vw;
+    width: 38vw;
   }
 
   .plan-card-checkmark {
     top: 50%;
     transform: translateY(-50%);
-    left: 3vw;
+    left: 3.5vw;
     width: 6vw;
     height: 6vw;
   }
@@ -225,7 +225,7 @@ h2 {
   }
 
   .plan-card-price-billed p:first-of-type {
-    font-size: 4.5vw;
+    font-size: 4.25vw;
   }
 
   .plan-card-price-billed p:last-child {
