@@ -213,6 +213,7 @@ main {
   align-items: center;
   gap: 72px;
   overflow: hidden;
+  height: 100vh;
 }
 
 div {
