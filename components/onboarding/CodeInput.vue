@@ -8,36 +8,30 @@ defineProps({
 
 const emit = defineEmits(['update:modelValue']);
 
-const code01 = ref('');
-const code02 = ref('');
-const code03 = ref('');
-const code04 = ref('');
-const code05 = ref('');
-const code06 = ref('');
+const codeValues = reactive(Array(6).fill(''));
 
 onMounted(() => {
   const inputs = document.querySelectorAll('.code-input');
 
   inputs.forEach((input, index) => {
-    if (index === 0) {
-      input.focus();
-    }
+    if (index === 0) input.focus();
 
-    input.addEventListener('input', (event) => {
-      if (event.target.value) {
-        event.target.nextElementSibling?.focus();
+    input.addEventListener('input', ({ target }) => {
+      if (target.value) {
+        target.nextElementSibling?.focus();
       }
     });
 
-    input.addEventListener('keydown', (event) => {
-      if (event.key === 'Backspace' && !event.target.value && index > 0) {
+    input.addEventListener('keydown', ({ key }) => {
+      if (key === 'Backspace' && !input.value && index > 0) {
         inputs[index - 1].focus();
       }
     });
 
-    input.addEventListener('keyup', (event) => {
-      if (code01.value && code02.value && code03.value && code04.value && code05.value && code06.value) {
-        emit('update:modelValue', `${code01.value}${code02.value}${code03.value}${code04.value}${code05.value}${code06.value}`);
+    input.addEventListener('keyup', () => {
+      const codeComplete = codeValues.every(value => value);
+      if (codeComplete) {
+        emit('update:modelValue', codeValues.join(''));
       }
     });
   });
@@ -47,12 +41,14 @@ onMounted(() => {
 <template>
   <div class="code-inputs-container">
     <div>
-      <input class="code-input" v-model="code01" maxlength="1" @keydown.enter.prevent />
-      <input class="code-input" v-model="code02" maxlength="1" @keydown.enter.prevent />
-      <input class="code-input" v-model="code03" maxlength="1" @keydown.enter.prevent />
-      <input class="code-input" v-model="code04" maxlength="1" @keydown.enter.prevent />
-      <input class="code-input" v-model="code05" maxlength="1" @keydown.enter.prevent />
-      <input class="code-input" v-model="code06" maxlength="1" @keydown.enter.prevent />
+      <input
+        v-for="(value, index) in codeValues"
+        :key="index"
+        class="code-input"
+        v-model="codeValues[index]"
+        maxlength="1"
+        @keydown.enter.prevent
+      />
     </div>
     <p v-if="errorMessage">{{ errorMessage }}</p>
   </div>
