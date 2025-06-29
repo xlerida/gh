@@ -51,10 +51,10 @@ onMounted(async () => {
     <div>
       <OnboardingPlanCard
         title="Annual"
-        :price="`${plans?.year?.price} /year`"
+        :price="`${plans?.year?.price ?? 89.99} /year`"
         :billed="`Billed annually`"
         :currency="plans?.year?.currency"
-        :trial="`${plans?.year?.trial_days}-day free trial`"
+        :trial="`${plans?.year?.trial_days ?? 7}-day free trial`"
         :isSelected="isAnnualSelected"
         :hasTooltip="true"
         tooltip="Save 20%"
@@ -62,10 +62,10 @@ onMounted(async () => {
       />
       <OnboardingPlanCard
         title="Monthly"
-        :price="`${plans?.monthly?.price} /month`"
+        :price="`${plans?.monthly?.price ?? 9.99} /month`"
         :billed="`Billed monthly`"
         :currency="plans?.monthly?.currency"
-        :trial="`${plans?.monthly?.trial_days}-day free trial`"
+        :trial="`${plans?.monthly?.trial_days ?? 3}-day free trial`"
         :isSelected="isMonthlySelected"
         @click="togglePlan('monthly')"
       />
