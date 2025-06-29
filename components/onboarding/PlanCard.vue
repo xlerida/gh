@@ -179,7 +179,6 @@ h2 {
 
   .plan-card-inner > div {
     width: 100%;
-    max-width: 40vw;
     display: flex;
     flex-direction: column;
   }
@@ -192,7 +191,7 @@ h2 {
     display: flex;
     align-items: center;
     font-size: 5vw;
-    padding: 0 0 0 12vw;
+    padding: 0 8vw 0 12vw;
     width: 38vw;
   }
 
