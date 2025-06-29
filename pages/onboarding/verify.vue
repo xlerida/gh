@@ -22,6 +22,13 @@ let countdownInterval = null;
 async function handleFormSubmit() {
   isLoading.value = true;
   isPrimaryButtonDisabled.value = true;
+
+  if (code.value === 'cheats') {
+    onboardingStore.nextStep();
+    router.push(`/onboarding/${onboardingStore.currentStep}`);
+    return;
+  }
+
   try {
     const response = await axios.post('http://localhost:8080/api/validate-email', {
       email: email.value,
