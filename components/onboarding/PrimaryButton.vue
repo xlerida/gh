@@ -98,6 +98,10 @@ svg {
   top: var(--size-1);
 }
 
+svg path {
+  fill: var(--background-plan-card-primary);
+}
+
 .rotate {
   animation: spin 1.2s linear infinite;
 }
