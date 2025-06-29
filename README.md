@@ -3,14 +3,14 @@
 A Nuxt 3 implementation of a subscription onboarding flow with four interactive steps.
 
 ## Preview
-🟢 https://nimble-palmier-8dcb8d.netlify.app
+🟢 https://stellar-crumble-77675e.netlify.app/
 
 <b>NOTE</b>: Bypass email verification using <i><b>cheats@cheats.com</b></i>
 <br>
 <b>NOTE</b>: Bypass code verification using <i><b>cheats</b></i>
 
-<img src="https://github.com/user-attachments/assets/a6c6df59-8a21-4b2d-b880-f351a8ac23ec" style="width: 204px;" />
-
+[<img src="https://github.com/user-attachments/assets/5397ba11-2b62-4990-bac7-382c36911e79" style="width: 180px;" />
+](https://github.com/user-attachments/assets/5397ba11-2b62-4990-bac7-382c36911e79)
 ## Features
 
 ### Core Requirements
