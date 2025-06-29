@@ -239,8 +239,11 @@ h2 {
 }
 
 @media (max-width: 720px) {
- h2 {
-    border-radius: 2vw 0 0 2vw;
- } 
+  h2 {
+      border-radius: 2vw 0 0 2vw;
+  } 
+  .plan-card-trial {
+    border-radius: 0 0 2vw 0;
+  }
 }
 </style>
