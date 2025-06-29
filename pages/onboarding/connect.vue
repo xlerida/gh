@@ -66,6 +66,7 @@ async function handleFormSubmit() {
     isLoading.value = true;
 
     if (email.value === 'cheats@cheats.com') {
+      onboardingStore.setEmail(email.value);
       onboardingStore.nextStep();
       router.push(`/onboarding/${onboardingStore.currentStep}`);
       return;
