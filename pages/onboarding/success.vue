@@ -51,7 +51,7 @@ onMounted(() => {
   
   gsap.to('.success-confetti', {
     duration: 3,
-    top: window.innerWidth < 1024 ? '1vw' : '80vw',
+    top: window.innerWidth < 1024 ? '1vw' : '6vw',
     ease: 'power4.out',
   });
 
