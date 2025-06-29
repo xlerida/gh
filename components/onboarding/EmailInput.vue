@@ -49,4 +49,10 @@ p {
   color: var(--color-text-error);
   font-size: 16px;
 }
+
+@media (max-width: 1024px) {
+  input {
+    font-size: 4vw;
+  }
+}
 </style>

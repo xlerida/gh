@@ -191,7 +191,7 @@ h2 {
     padding: 0;
     display: flex;
     align-items: center;
-    font-size: 6vw;
+    font-size: 5vw;
     padding: 0 0 0 12vw;
     width: 48vw;
   }
@@ -225,16 +225,16 @@ h2 {
   }
 
   .plan-card-price-billed p:first-of-type {
-    font-size: 4vw;
+    font-size: 4.5vw;
   }
 
   .plan-card-price-billed p:last-child {
-    font-size: 2vw;
+    font-size: 3vw;
   }
 
   .plan-card-trial {
     border-radius: 0 0 1vw 0;
-    font-size: 2vw;
+    font-size: 2.5vw;
   }
 }
 

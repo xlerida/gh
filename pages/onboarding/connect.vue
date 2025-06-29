@@ -231,8 +231,8 @@ label {
 
 .custom-checkbox__checkmark {
   position: absolute;
-  top: 0;
-  left: 68px;
+  top: var(--size-1);
+  left: calc(var(--size-9) * 1.5);
   height: 20px;
   width: 20px;
   background-color: transparent;
@@ -251,10 +251,10 @@ label {
 }
 
 .custom-checkbox__checkmark:after {
-  left: 6px;
-  top: var(--size-1);
-  width: 6px;
-  height: 10px;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 9px;
   border: solid white;
   border-width: 0 var(--size-1) var(--size-1) 0;
   transform: rotate(45deg);
@@ -313,52 +313,47 @@ button {
   }
   
   .custom-checkbox__checkmark {
-    top: 1.5vw;
-    left: 5.8vw;
+    top: 0.8vw;
+    left: 4.5vw;
+    width: 4vw;
+    height: 4vw;
+  }
+
+  .custom-checkbox__checkmark:after {
+    left: 1.2vw;
+    top: 0.4vw;
+    width: 1vw;
+    height: 1.6vw;
   }
 }
 
-@media (max-width: 720px) {
-    .custom-checkbox__label {
-    font-size: 4vw;
-  }
-  
-  .custom-checkbox__checkmark {
-    top: 1.2vw;
-    left: 5vw;
+@media (max-width: 768px) {
+  .custom-checkbox__checkmark:after {
+    left: 1.1vw;
+    width: 1vw;
+    height: 1.6vw;
   }
 }
 
-@media (max-width: 600px) {
-    .custom-checkbox__label {
-    font-size: 4vw;
-  }
-  
+@media (max-width: 620px) {
   .custom-checkbox__checkmark {
-    top: 0.5vw;
+    top: 0.8vw;
     left: 5vw;
+    width: 4vw;
+    height: 4vw;
+  }
+   .custom-checkbox__checkmark:after {
+    left: 1.1vw;
+    width: 0.9vw;
+    height: 1.4vw;
   }
 }
 
 @media (max-width: 480px) {
-    .custom-checkbox__label {
-    font-size: 4vw;
-  }
-  
-  .custom-checkbox__checkmark {
-    top: 0.3vw;
-    left: 4vw;
-  }
-}
-
-@media (max-width: 400px) {
-    .custom-checkbox__label {
-    font-size: 4vw;
-  }
-  
-  .custom-checkbox__checkmark {
-    top: 0vw;
-    left: 4vw;
+   .custom-checkbox__checkmark:after {
+    left: 1vw;
+    width: 0.7vw;
+    height: 1.2vw;
   }
 }
 </style>
