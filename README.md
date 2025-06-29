@@ -3,7 +3,7 @@
 A Nuxt 3 implementation of a subscription onboarding flow with four interactive steps.
 
 ## Preview
-🟢 https://papaya-mooncake-5e37fb.netlify.app/
+🟢 https://singular-pixie-3b64c6.netlify.app/
 
 <b>NOTE</b>: Bypass email verification using <i><b>cheats@cheats.com</b></i>
 <br>
