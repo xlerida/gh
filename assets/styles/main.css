@@ -15,10 +15,16 @@ body {
   height: 100vh;
   font-family: var(--font-family-primary);
   color: var(--color-text-primary);
-  background-image: url('assets/images/background.svg');
+  background-image: url('assets/images/background-landscape.svg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+@media (max-width: 1024px) {
+  body {
+    background-image: url('assets/images/background-portrait.svg');
+  }
 }
 
 #__nuxt {
