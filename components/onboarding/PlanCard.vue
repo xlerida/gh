@@ -32,6 +32,10 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  isBestValue: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const currencySymbol = computed(() => {
@@ -47,11 +51,13 @@ const currencySymbol = computed(() => {
     </div>
     <div class="plan-card-inner">
       <h2>{{ title }}</h2>
-      <div class="plan-card-price-billed">
-        <p><span>{{ currencySymbol }}</span>{{ price }}</p>
-        <p>{{ billed }}</p>
+      <div>
+        <div class="plan-card-price-billed">
+          <p><span>{{ currencySymbol }}</span>{{ price }}</p>
+          <p>{{ billed }}</p>
+        </div>
+        <p class="plan-card-trial">{{ trial }}</p>
       </div>
-      <p class="plan-card-trial">{{ trial }}</p>
     </div>
   </div>
 </template>
@@ -158,5 +164,83 @@ h2 {
 
 .plan-card-checkmark-selected svg path {
   fill: var(--background-plan-card-secondary);
+}
+
+@media (max-width: 1024px) {
+  .plan-card {
+    width: 80vw;
+    height: 40vw;
+  }
+
+  .plan-card-inner {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .plan-card-inner > div {
+    width: 100%;
+    max-width: 36vw;
+    display: flex;
+    flex-direction: column;
+  }
+
+  h2 {
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 1vw 0 0 1vw;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    font-size: 6vw;
+    padding: 0 0 0 12vw;
+    width: 48vw;
+  }
+
+  .plan-card-checkmark {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 3vw;
+    width: 6vw;
+    height: 6vw;
+  }
+
+  .plan-card-checkmark-selected {
+    width: 6.5vw;
+    height: 6.5vw;
+  }
+
+  .plan-card-checkmark svg {
+    left: 3vw;
+    width: 4vw;
+    height: 4vw;
+  }
+
+  .plan-card-price-billed {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .plan-card-price-billed p:first-of-type {
+    font-size: 4vw;
+  }
+
+  .plan-card-price-billed p:last-child {
+    font-size: 2vw;
+  }
+
+  .plan-card-trial {
+    border-radius: 0 0 1vw 0;
+    font-size: 2vw;
+  }
+}
+
+@media (max-width: 720px) {
+ h2 {
+    border-radius: 2vw 0 0 2vw;
+ } 
 }
 </style>

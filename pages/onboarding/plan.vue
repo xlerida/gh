@@ -194,4 +194,32 @@ button {
   opacity: 0.8;
   text-decoration: underline;
 }
+
+@media (max-width: 1024px) {
+  main {
+    width: 100vw;
+    max-height: 100%;
+    margin-top: 18vw;
+  }
+
+  main > div {
+    flex-direction: column;
+    gap: var(--size-6);
+    width: 100%;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 6.5vw;
+    white-space: nowrap;
+  }
+
+  .terms {
+    font-size: 3.2vw;
+  }
+
+  .onboarding-primary-button {
+    width: 80vw;
+  }
+}
 </style>

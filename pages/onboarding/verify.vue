@@ -262,7 +262,7 @@ button {
   }
 
   form {
-    padding: 4vw;
+    padding: 4vw 08vw;
     margin-bottom: 10vw;
   }
 
