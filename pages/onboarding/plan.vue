@@ -221,5 +221,9 @@ button {
   .onboarding-primary-button {
     width: 80vw;
   }
+
+  .plan-card {
+    height: 30vw;
+  }
 }
 </style>

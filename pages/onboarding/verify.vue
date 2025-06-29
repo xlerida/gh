@@ -124,7 +124,7 @@ onUnmounted(() => {
         <OnboardingCodeInput :errorMessage="errorMessage" @update:modelValue="handleCode" />
         <div>
           <p>Didn't get an email? 
-            <span v-if="canResend" @click="handleResendCode">Resend Code</span>
+            <span v-if="canResend" class="resend-code" @click="handleResendCode">Resend Code</span>
             <span v-else class="resend-disabled">Resend again in {{ countdown }}s</span>
           </p>
           <OnboardingPrimaryButton 
@@ -262,12 +262,16 @@ button {
   }
 
   form {
-    padding: 4vw 08vw;
+    padding: 4vw 8vw;
     margin-bottom: 10vw;
   }
 
   form div:last-child {
     margin-top: 8vw;
+  }
+
+  form div:last-child p {
+    font-size: 4vw;
   }
 }
 

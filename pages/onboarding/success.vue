@@ -51,7 +51,7 @@ onMounted(() => {
   
   gsap.to('.success-confetti', {
     duration: 3,
-    top: 80,
+    top: window.innerWidth < 1024 ? '1vw' : '80vw',
     ease: 'power4.out',
   });
 
@@ -212,7 +212,9 @@ main {
   justify-content: center;
   align-items: center;
   gap: 72px;
+  overflow: hidden;
 }
+
 div {
   display: flex;
   flex-direction: column;
@@ -241,12 +243,32 @@ span {
 }
 
 .success-confetti {
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: -1;
 }
 
 .test {
   display: none;
+}
+
+@media (max-width: 1024px) {
+  main {
+    padding: 0 8vw;
+    height: 100vh;
+  }
+
+  h1 {
+    font-size: 7vw;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 4vw;
+  }
+
+  .success-confetti {
+    transform: scale(0.6);
+  }
 }
 </style>
