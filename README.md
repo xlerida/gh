@@ -5,10 +5,12 @@ A Nuxt 3 implementation of a subscription onboarding flow with four interactive 
 ## Preview
 🟢 https://papaya-mooncake-5e37fb.netlify.app/
 
-NOTE: Bypass email verification using <i><b>cheats@cheats.com</b></i>
-<br>
-NOTE: Bypass code verification using <i><b>cheats</b></i>
+<img src="https://github.com/user-attachments/assets/6980fb84-f2e2-4c71-8fd9-10a856714842" style="width: 238px;" />
+<img src="https://github.com/user-attachments/assets/a88c199a-6bda-4e03-a172-7a394feb3bf1" style="width: 700px;" />
 
+<b>NOTE</b>: Bypass email verification using <i><b>cheats@cheats.com</b></i>
+<br>
+<b>NOTE</b>: Bypass code verification using <i><b>cheats</b></i>
 
 ## Features
 
